@@ -2,10 +2,9 @@ require_relative 'config/environment'
 
 class App < Sinatra::Base
 
-  # This is a sample static route.
+   # This is a sample static route.
   get '/hello' do
-    erb :index
-   
+    "Hello World!"
   end
 
   # This is a sample dynamic route.
@@ -15,17 +14,11 @@ class App < Sinatra::Base
   end
 
   # Code your final two routes here:
-  get '/goodbye/:name' do 
-    @user_name = params[:name]
-   erb :goodbye
-  end 
-  
-  get '/multiply/:num1/:num2' do 
-  @user_name.select do |user|
-    user.id == params[:id]
-  end.first 
-end 
-  
+  get "/goodbye/:name" do
+    @name = params[:name]
+    "Goodbye, #{@name}."
+  end
+
   get '/medicines/:id' do
     @medicine = all_the_medicines.select do |medicine|
       medicine.id == params[:id]
@@ -37,7 +30,4 @@ end
     @product = params[:num1].to_f * params[:num2].to_f
     return "#{@product}"
   end
-end
-
-
 end

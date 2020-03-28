@@ -26,6 +26,18 @@ class App < Sinatra::Base
   end.first 
 end 
   
-  
+  get '/medicines/:id' do
+    @medicine = all_the_medicines.select do |medicine|
+      medicine.id == params[:id]
+    end.find
+    erb :'/medicines/show.html'
+  end
+
+  get "/multiply/:num1/:num2" do
+    @product = params[:num1].to_f * params[:num2].to_f
+    return "#{@product}"
+  end
+end
+
 
 end

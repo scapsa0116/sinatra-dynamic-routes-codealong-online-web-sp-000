@@ -4,7 +4,8 @@ class App < Sinatra::Base
 
   # This is a sample static route.
   get '/hello' do
-    "Hello World!"
+    erb :index
+   
   end
 
   # This is a sample dynamic route.
@@ -14,5 +15,17 @@ class App < Sinatra::Base
   end
 
   # Code your final two routes here:
+  get '/goodbye/:name' do 
+    @user_name = params[:name]
+   erb :goodbye
+  end 
+  
+  get '/multiply/:num1/:num2' do 
+  @user_name.select do |user|
+    user.id == params[:id]
+  end.first 
+end 
+  
+  
 
 end
